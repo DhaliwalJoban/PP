@@ -80,6 +80,19 @@ if(!isset($_SESSION['user'])) // If session is not set then redirect to Login Pa
 echo 'Welsome! '.$_SESSION['user']; 
  ?>
 
+ <table>
+  <tr>
+    <td><a href="#"><img src="style/event1.jpg" width="150" height="150"></a></td>
+    <td><a href="#"><img src="style/traffic.jpg" width="150" height="150"></a></td>
+    <td><a href="#"><img src="style/alert.jpg" width="150" height="150"></a></td>
+  </tr>
+  <tr>
+    <td><a href="#"><img src="style/city.jpg" width="150" height="150"></a></td>
+    <td><a href="#"><img src="style/holder.png" width="150" height="150"></a></td>
+    <td><a href="#"><img src="style/holder.png" width="150" height="150"></a></td>
+  </tr>
+</table>
+
       </div>
     </div>
     <div id="content_footer"></div>

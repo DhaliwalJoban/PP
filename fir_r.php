@@ -79,7 +79,7 @@ echo 'Welsome!'.$user;
 <form method="post" action="fir_r1.php">
 <fieldset>
 <legend>FIR Form</legend>
-<table width="400" border="0" cellpadding="10" cellspacing="10">
+<table width="100%" border="0" cellpadding="5" cellspacing="5">
 <tr>
 <td style="font-weight: bold"><div align="right"><label for="c_type">Complain Type</label></div></td>
 <td>  
