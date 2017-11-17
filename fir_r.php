@@ -2,11 +2,10 @@
 <html>
 <?php 
 session_start();
+include "includes/db.php";
 ?>
 <head>
-  <title>DashBoard</title>
-
-
+  <title>textured_orbs - a page</title>
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
@@ -22,12 +21,8 @@ session_start();
     <div id="content_header"></div>
     <div id="site_content">
       <div id="sidebar_container">
-
-      	<a href="logout.php">Logout</a>
-
         <div class="sidebar">
           <div class="sidebar_top"></div>
-
           <div class="sidebar_item">
             <!-- insert your sidebar items here -->
             <h3>Latest News</h3>
@@ -66,19 +61,66 @@ session_start();
       </div>
       <div id="content">
         <!-- insert the page content here -->
-<?php 
+ <?php 
               include "includes/nav-min.php"
 
-?>
-        <h1>DashBoard</h1>
-        
-<?php 
+?>       
+        <h1>FIR Registration</h1>
+        <?php 
 if(!isset($_SESSION['user'])) // If session is not set then redirect to Login Page
        {
            header("Location:Thanks.php");  
        }
-echo 'Welsome! '.$_SESSION['user']; 
+
+       $user = $_SESSION['user']
+echo 'Welsome! '<div class="1user">                                                                                                                                                                                                                                                                                                                                                                                                                                             </div>; 
  ?>
+          
+<form method="post" action="fir_r1.php">
+<fieldset>
+<legend>FIR Form</legend>
+<table width="400" border="0" cellpadding="10" cellspacing="10">
+<tr>
+<td style="font-weight: bold"><div align="right"><label for="c_type">Complain Type</label></div></td>
+<td>  
+<select name="c_type">      
+
+  <?php
+
+  $sql ="select crime_type from mstr_crimetype";
+  $run = mysqli_query($conn,$sql);
+  while ($rows = mysqli_fetch_assoc($run)) {
+    echo "
+      <option>$rows[crime_type]</option>
+    ";
+  }
+
+  ?>
+  </select>
+
+</td>
+</tr>
+<tr>
+<td style="font-weight: bold"><div align="right"><label for="c_title">Title</label></div></td>
+<td><input name="c_title" type="text" class="input" size="25" required /></td>
+</tr>
+<tr>
+<td height="23" style="font-weight: bold"><div align="right"><label for="c_desc">Description</label></div></td>
+<td><TEXTAREA name="c_desc"></TEXTAREA></td>
+</tr>
+<tr>
+<td height="23" style="font-weight: bold"><div align="right"><label for="mobile">Mobile</label></div></td>
+<td><input name="mobile" type="text" maxlength="10"  pattern="[0-9]{10}" class="input" size="25" required /></td>
+</tr>
+<tr>
+<td height="23"></td>
+<td><div align="right">
+  <input type="submit" name="submit" value="Register!" />
+</div></td>
+</tr>
+</table>
+</fieldset>
+</form>
 
       </div>
     </div>
@@ -90,3 +132,13 @@ echo 'Welsome! '.$_SESSION['user'];
   </div>
 </body>
 </html>
+
+  <?php
+
+  $sql ="select * from tbl_customer";
+  $run = mysqli_query($conn,$sql);
+  while ($rows = mysqli_fetch_assoc($run)) {
+    echo "$rows[cid]";
+  }
+
+  ?>

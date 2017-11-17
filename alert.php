@@ -1,12 +1,8 @@
 <!DOCTYPE HTML>
 <html>
-<?php 
-session_start();
-?>
+        <?php include "includes/db.php";?>
 <head>
-  <title>DashBoard</title>
-
-
+  <title>Punjab Police | Home</title>
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
@@ -21,13 +17,10 @@ session_start();
 ?>
     <div id="content_header"></div>
     <div id="site_content">
-      <div id="sidebar_container">
-
-      	<a href="logout.php">Logout</a>
-
+      <div id="banner"></div>
+	  <div id="sidebar_container">
         <div class="sidebar">
           <div class="sidebar_top"></div>
-
           <div class="sidebar_item">
             <!-- insert your sidebar items here -->
             <h3>Latest News</h3>
@@ -66,20 +59,28 @@ session_start();
       </div>
       <div id="content">
         <!-- insert the page content here -->
-<?php 
-              include "includes/nav-min.php"
+        <h1>Alert</h1>
 
-?>
-        <h1>DashBoard</h1>
+
+        <?php
+
+  $sql ="select * from notification_main";
+  $run = mysqli_query($conn,$sql);
+  while ($rows = mysqli_fetch_assoc($run)) {
+    echo "
+        <div>
+      <img src='img/title_img.jpg' style='width:150px' >
+      <h3>$rows[title_notification_main]</h3>
+      <p>$rows[des_notification_main]</p>
+      <hr size='1'>
+        </div>
+
+    ";
+  }
+
+  ?>
+
         
-<?php 
-if(!isset($_SESSION['user'])) // If session is not set then redirect to Login Page
-       {
-           header("Location:Thanks.php");  
-       }
-echo 'Welsome! '.$_SESSION['user']; 
- ?>
-
       </div>
     </div>
     <div id="content_footer"></div>
