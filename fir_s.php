@@ -65,7 +65,7 @@ include "includes/db.php";
               include "includes/nav-min.php"
 
 ?>       
-        <h1>FIR Registration</h1>
+        <h1>FIR Status</h1>
         <?php 
 if(!isset($_SESSION['user'])) // If session is not set then redirect to Login Page
        {
@@ -76,51 +76,41 @@ if(!isset($_SESSION['user'])) // If session is not set then redirect to Login Pa
 echo 'Welsome!'.$user;
  ?>
           
-<form method="post" action="fir_r1.php">
-<fieldset>
-<legend>FIR Form</legend>
-<table width="400" border="0" cellpadding="10" cellspacing="10">
-<tr>
-<td style="font-weight: bold"><div align="right"><label for="c_type">Complain Type</label></div></td>
-<td>  
-<select name="c_type">      
 
+<table width="100%" border="0">
+   
+    <tr>
+      <th>Type</th>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Date </th><th></th>
+    </tr>
   <?php
 
-  $sql ="select crime_type from mstr_crimetype";
+  $sql ="select * from tbl_complains where cust_name='$user'";
   $run = mysqli_query($conn,$sql);
   while ($rows = mysqli_fetch_assoc($run)) {
     echo "
-      <option>$rows[crime_type]</option>
+
+      <tr>
+
+      <td>$rows[comp_type]</td>
+      <td>$rows[comp_title]</td>
+      <td>$rows[status]</td>
+      <td>$rows[create_date]</td>
+          <td><a>Detail</a></td>
+
+
+
+    </tr>
+
+
     ";
   }
 
   ?>
-  </select>
-
-</td>
-</tr>
-<tr>
-<td style="font-weight: bold"><div align="right"><label for="c_title">Title</label></div></td>
-<td><input name="c_title" type="text" class="input" size="25" required /></td>
-</tr>
-<tr>
-<td height="23" style="font-weight: bold"><div align="right"><label for="c_desc">Description</label></div></td>
-<td><TEXTAREA name="c_desc"></TEXTAREA></td>
-</tr>
-<tr>
-<td height="23" style="font-weight: bold"><div align="right"><label for="mobile">Mobile</label></div></td>
-<td><input name="mobile" type="text" maxlength="10"  pattern="[0-9]{10}" class="input" size="25" required /></td>
-</tr>
-<tr>
-<td height="23"></td>
-<td><div align="right">
-  <input type="submit" name="submit" value="Register!" />
-</div></td>
-</tr>
+ 
 </table>
-</fieldset>
-</form>
 
       </div>
     </div>
