@@ -84,7 +84,7 @@ echo 'Welsome! '.$_SESSION['user'];
   <tr>
     <td><a href="#"><img src="style/event1.jpg" width="150" height="150"></a></td>
     <td><a href="#"><img src="style/traffic.jpg" width="150" height="150"></a></td>
-    <td><a href="#"><img src="style/alert.jpg" width="150" height="150"></a></td>
+    <td><a href="alert.php"><img src="style/alert.jpg" width="150" height="150"></a></td>
   </tr>
   <tr>
     <td><a href="#"><img src="style/city.jpg" width="150" height="150"></a></td>

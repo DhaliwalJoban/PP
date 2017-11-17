@@ -59,19 +59,23 @@
       </div>
       <div id="content">
         <!-- insert the page content here -->
+        <?php 
+              include "includes/nav-min.php"
+
+?>
         <h1>Alert</h1>
 
 
         <?php
 
-  $sql ="select * from notification_main";
+  $sql ="select * from alert";
   $run = mysqli_query($conn,$sql);
   while ($rows = mysqli_fetch_assoc($run)) {
     echo "
         <div>
       <img src='img/title_img.jpg' style='width:150px' >
-      <h3>$rows[title_notification_main]</h3>
-      <p>$rows[des_notification_main]</p>
+      <h3>$rows[title]</h3>
+      <p>$rows[des]</p>
       <hr size='1'>
         </div>
 
